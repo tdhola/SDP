@@ -55,7 +55,7 @@ button a:hover{
   font-weight: 400;
   line-height: 45px;
   margin: 0 0 2em;
-  max-width: 160px;
+  max-width: 180px;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
@@ -266,21 +266,22 @@ button a:hover{
                                 <h4 class="card-title">Product List</h4>
                                 <section class="buttons">
                                     <div class="container justify-content-end">
-                                      <button class="btn btn-5"><a href="add_product.html" >Add New Book</a></button> 
+                                      <button class="btn btn-5"><a href="add_product.html" >Add New Product</a></button> 
                                     </div>
                                   </section>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                         <thead>
                                             <tr>
-                                                <th>Product ID</th>
-                                                <th>Product Name</th>
-                                                <th>Seller Name</th>
-                                                <th>Brand Name</th>
-                                                <th>Category Name</th>
-                                                <th>Price</th>
-                                                <th>Quantity</th>
-                                                <th style="text-align: center;">Actions</th>
+                                                <th style="font-weight: bold;">Product ID</th>
+                                                <th style="font-weight: bold;">Product Name</th>
+                                                <th style="font-weight: bold;">Seller Name</th>
+                                                <th style="font-weight: bold;">Brand Name</th>
+                                                <th style="font-weight: bold;">Category Name</th>
+                                                <th style="font-weight: bold;">Price</th>
+                                                <th style="font-weight: bold;">Quantity</th>
+                                                <th style="text-align: center; font-weight: bold">Actions</th>
+                                                <th style="font-weight: bold;">Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -298,6 +299,9 @@ button a:hover{
                                                     <a href="update_product.html" class="edit" title="" data-toggle="tooltip" data-original-title="Edit" style="margin: 0 10px;color:green;"><i class="fa-solid fa-pencil"></i></a>
                                                     <a href="#" class="delete" title="" data-toggle="tooltip" data-original-title="Delete" style="margin: 0 10px;color: red;"><i class="fa-solid fa-trash"></i></a>
                                                 </td>
+                                                <td>
+                                                    <span class="badge bg-success">Active</span>
+                                                  </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
@@ -312,6 +316,9 @@ button a:hover{
                                                     <a href="update_product.html" class="edit" title="" data-toggle="tooltip" data-original-title="Edit" style="margin: 0 10px;color:green;"><i class="fa-solid fa-pencil"></i></a>
                                                     <a href="#" class="delete" title="" data-toggle="tooltip" data-original-title="Delete" style="margin: 0 10px;color: red;"><i class="fa-solid fa-trash"></i></a>
                                                 </td>
+                                                <td>
+                                                    <span class="badge bg-success">Active</span>
+                                                  </td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
@@ -326,6 +333,9 @@ button a:hover{
                                                     <a href="update_product.html" class="edit" title="" data-toggle="tooltip" data-original-title="Edit" style="margin: 0 10px;color:green;"><i class="fa-solid fa-pencil"></i></a>
                                                     <a href="#" class="delete" title="" data-toggle="tooltip" data-original-title="Delete" style="margin: 0 10px;color: red;"><i class="fa-solid fa-trash"></i></a>
                                                 </td>
+                                                <td>
+                                                    <span class="badge bg-danger">Deactive</span>
+                                                  </td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
@@ -340,6 +350,9 @@ button a:hover{
                                                     <a href="update_product.html" class="edit" title="" data-toggle="tooltip" data-original-title="Edit" style="margin: 0 10px;color:green;"><i class="fa-solid fa-pencil"></i></a>
                                                     <a href="#" class="delete" title="" data-toggle="tooltip" data-original-title="Delete" style="margin: 0 10px;color: red;"><i class="fa-solid fa-trash"></i></a>
                                                 </td>
+                                                <td>
+                                                    <span class="badge bg-danger">Deactive</span>
+                                                  </td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
@@ -423,6 +436,9 @@ button a:hover{
                                                     <a href="#" class="view" title="" data-toggle="tooltip" data-original-title="View" style="margin: 0 10px;"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="update_product.html" class="edit" title="" data-toggle="tooltip" data-original-title="Edit" style="margin: 0 10px;color:green;"><i class="fa-solid fa-pencil"></i></a>
                                                     <a href="#" class="delete" title="" data-toggle="tooltip" data-original-title="Delete" style="margin: 0 10px;color: red;"><i class="fa-solid fa-trash"></i></a>
+                                                </td>
+                                                <td>
+                                                    <span class="badge bg-danger">Deactive</span>
                                                 </td>
                                             </tr>
                                             
