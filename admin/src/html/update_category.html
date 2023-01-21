@@ -11,8 +11,10 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo-text.png">
     <title>Lighthouse</title>
-    <!-- This page plugin CSS -->
-    <link href="../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -33,10 +35,8 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
         <header class="topbar" data-navbarbg="skin6">
             <nav class="navbar top-navbar navbar-expand-md">
                 <div class="navbar-header" data-logobg="skin6">
@@ -49,7 +49,7 @@
                     <div class="navbar-brand">
                         <!-- Logo icon -->
                         <a href="index.html">
-                          
+                            
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span class="logo-text">
@@ -110,6 +110,7 @@
                                 <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
                                         class="svg-icon mr-2 ml-1"></i>
                                     My Profile</a>
+                               
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
@@ -140,20 +141,20 @@
                         <li class="sidebar-item"> <a href="product.html" class="sidebar-link" href="javascript:void(0)"
                             aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
                                 class="hide-menu">Product </span></a></li>
-                                <li class="list-divider"></li>
-                                <li class="sidebar-item"> <a href="order.html" class="sidebar-link" href="javascript:void(0)"
-                                    aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
-                                        class="hide-menu">Order </span></a></li>
-                                <li class="list-divider"></li>
-                                <li class="sidebar-item"> <a href="user.html" class="sidebar-link" href="javascript:void(0)"
-                                    aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
-                                        class="hide-menu">User </span></a></li>
-                                <li class="list-divider"></li>
-                                <li class="sidebar-item"> <a href="category.html" class="sidebar-link" href="javascript:void(0)"
-                                    aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
-                                        class="hide-menu">Category </span></a></li>
-                                <li class="list-divider"></li>
                         <li class="list-divider"></li>
+                        <li class="sidebar-item"> <a href="order.html" class="sidebar-link" href="javascript:void(0)"
+                            aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                                class="hide-menu">Order </span></a></li>
+                        <li class="list-divider"></li>
+                        <li class="sidebar-item"> <a href="user.html" class="sidebar-link" href="javascript:void(0)"
+                            aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                                class="hide-menu">User </span></a></li>
+                        <li class="list-divider"></li>
+                        <li class="sidebar-item"> <a href="category.html" class="sidebar-link" href="javascript:void(0)"
+                            aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                                class="hide-menu">Category </span></a></li>
+                        <li class="list-divider"></li>
+
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html"
                                 aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
                                     class="hide-menu">Logout</span></a></li>
@@ -163,7 +164,7 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-       
+
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -176,7 +177,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">Product</li>
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">Category</li>
                                 </ol>
                             </nav>
                         </div>
@@ -199,69 +200,47 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title" style="color: black;">Update Products</h4>
+                                <h4 class="card-title" style="color: black;">Update Books</h4>
                                 <div class="container">
                                 <form name="contactForm"  action="#" method="post" style="margin-top: 50px;">
-                                   
                                     <div class="row" >
                                         <div class="col-md-6">
                                             <label class="form-group">
-                                                <input type="text" class="form-control" name="pro_name" value="" required>
-                                                <span>Product ID</span>
+                                                <input type="text" class="form-control" name="cat_id" value="" required>
+                                                <span>Category ID</span>
                                                 <span class="border"></span>
-                                                <span class="error" id="nameErr"></span>
+                                                <span class="error" id="idErr"></span>
                                             </label>
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-group">
-                                                <input type="text" class="form-control" name="pro_type" value="Action" required>
-                                                <span for="">Seller ID</span>
+                                                <input type="text" class="form-control" name="brand_name" value="" required>
+                                                <span>Brand Name</span>
                                                 <span class="border"></span>
-                                                <span class="error" id="typeErr"></span>
+                                                <span class="error" id="bnameErr"></span>
                                             </label>
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-group">
-                                                <input type="text" class="form-control" name="pro_mrp" value="750" required>
-                                                <span>Product MRP</span>
+                                                <input type="text" class="form-control" name="cat_name" value="" required>
+                                                <span for="">Category Name</span>
                                                 <span class="border"></span>
-                                                <span class="error" id="mrpErr"></span>
+                                                <span class="error" id="cnameErr"></span>
                                             </label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <label class="form-group">
-                                                <input type="text" class="form-control" name="pro_price" value="650" required>
-                                                <span for="">Product Price</span>
+                                                <!-- <textarea name="" id="" class="form-control" name="pro_desc" required>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, aperiam? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, aperiam?</textarea> -->
+                                                <input type="text" class="form-control" name="cat_desc" value="" required>
+                                                <span for="">Category Description</span>
                                                 <span class="border"></span>
-                                                <span class="error" id="priceErr"></span>
+                                                <span class="error" id="descErr"></span>
                                             </label>
                                         </div>
-                                        <div class="col-md-6">
-                                          <label class="form-group">
-                                              <input type="text" class="form-control" name="qty" value="5" required>
-                                              <span for="">Quantity</span>
-                                              <span class="border"></span>
-                                              <span class="error" id="qtyErr"></span>
-                                          </label>
-                                      </div>
-                                      
-                                        <label class="form-group">
-                                            <!-- <textarea name="" id="" class="form-control" name="pro_desc" required>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, aperiam? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, aperiam?</textarea> -->
-                                            <input type="text" class="form-control" name="pro_desc" value="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, aperiam? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, aperiam?" required>
-                                            <span for="">Product Description</span>
-                                            <span class="border"></span>
-                                            <span class="error" id="descErr"></span>
-                                        </label>
-                                        <label class="form-group">
-                                          <span for="" style="margin-top:-10px">Product Image</span>
-                                          <input type="file" id="file" style="margin-left:150px">
-                                          
-                                          <span class="border"></span>
-                                          <span class="error" id="imgErr" style="margin-left:-435px;margin-top:17px"></span>
-                                      </label>
+                                        </div>
                                       <div id="imagePreview" ></div>
                                       <div class="row">
-                                        <button name="data" type="button" onclick="add_Product()">Click</button>
+                                        <button name="data" type="button" onclick="update_category()">Click</button>
                                     </div>
                                     </div>
                                 </form>
@@ -272,47 +251,27 @@
                 </div>
                 
             </div>
-            
-            <footer class="footer text-center text-muted">
-                All Rights Reserved by Adminmart. Designed and Developed by <a
-                    href="https://Lighthouse.com">Lighthouse</a>.
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- apps -->
-    <!-- apps -->
-    <script src="../dist/js/app-style-switcher.js"></script>
-    <script src="../dist/js/feather.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="../assets/extra-libs/sparkline/sparkline.js"></script>
-    <!--Wave Effects -->
-    <!-- themejs -->
-    <!--Menu sidebar -->
-    <script src="../dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="../dist/js/custom.min.js"></script>
-    <!--This page plugins -->
-    <script src="../assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../dist/js/pages/datatable/datatable-basic.init.js"></script>
-    <script src="main.js"></script>
-</body>
 
-</html>
+        <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+        <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- apps -->
+        <!-- apps -->
+        <script src="../dist/js/app-style-switcher.js"></script>
+        <script src="../dist/js/feather.min.js"></script>
+        <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+        <script src="../dist/js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="../dist/js/custom.min.js"></script>
+        <!--This page JavaScript -->
+        <script src="../assets/extra-libs/c3/d3.min.js"></script>
+        <script src="../assets/extra-libs/c3/c3.min.js"></script>
+        <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
+        <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+        <script src="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+        <script src="../assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+    
+    </html>

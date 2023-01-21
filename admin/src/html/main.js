@@ -4,12 +4,25 @@ function printError(elemId, hintMsg) {
 }
 
 function getData(){
+    var id = document.contactForm.id.value;
     var name = document.contactForm.name.value;
     var email = document.contactForm.email.value;
     var mobile = document.contactForm.mobile.value;
     var address = document.contactForm.address.value;
 
-    var nameErr = emailErr = mobileErr  = addressErr = true;
+    var idErr = nameErr = emailErr = mobileErr  = addressErr = true;
+    if(id == "") {
+        printError("idErr", "*Please enter user id");
+    } else {
+        var regex = /^[1-9]\d{9}$/;
+        if(regex.test(id) === false) {
+            printError("idErr", "*Please enter a valid 10 digit mobile number");
+        } else{
+            printError("idErr", "");
+            idErr = false;
+        }
+    }
+
     if(name == "") {
         printError("nameErr", "*Please enter your name");
         
@@ -63,11 +76,12 @@ function add_Product(){
     var cat_id = document.contactForm.cat_id.value;
   var pro_name = document.contactForm.pro_name.value;
   var pro_price = document.contactForm.pro_price.value;
-  var discount = document.contactForm.discount.value;
+//   var discount = document.contactForm.discount.value;
   var pro_desc = document.contactForm.pro_desc.value;
+  var quantity = document.contactForm.quantity.value;
   // var pro_price = document.contactForm.address.value;
 
-  var idErr = sidErr = bidErr  = cidErr = nameErr = priceErr = discErr =descErr = true;
+  var idErr = sidErr = bidErr  = cidErr = nameErr = priceErr = discErr =descErr = qtyErr = true;
   if(pro_id == "") {
     printError("idErr", "*Please enter product id");
 } else {
@@ -124,7 +138,7 @@ if(cat_id == "") {
           nameErr = false;
       }
   }
-
+  
 
   if(pro_price == "")
   {
@@ -137,6 +151,20 @@ if(cat_id == "") {
       } else{
           printError("priceErr", "");
           priceErr = false;
+      }
+  }
+
+  if(quantity == "")
+  {
+    printError("qtyErr", "*Please enter product quantity");
+  }
+    else {
+      var regex = /^[0-9]+$/;
+      if(regex.test(quantity) === false) {
+          printError("qtyErr", "*Please enter only digit");
+      } else{
+          printError("qtyErr", "");
+          qtyErr = false;
       }
   }
   if(pro_desc == "")
@@ -173,52 +201,71 @@ if(cat_id == "") {
 };
 
 function update_order(){
+  var order_id = document.contactForm.order_id.value;
+  var cid = document.contactForm.cid.value;
+  var pro_id = document.contactForm.pro_id.value;
+//   var cus_id = document.contactForm.cus_id.value;
   var pro_name = document.contactForm.pro_name.value;
-  var username = document.contactForm.username.value;
-  var custo_name = document.contactForm.custo_name.value;
   var pro_price = document.contactForm.pro_price.value;
   var qty = document.contactForm.qty.value;
   var date = document.contactForm.date.value;
   var order_status = document.contactForm.order_status.value;
   var payment_status = document.contactForm.payment_status.value;
   // console.log(order_status);
-  var nameErr = userErr = custoErr  = priceErr = qtyErr = dateErr = statusErr = payErr = true;
-  if(pro_name == "") {
-      printError("nameErr", "*Please enter your name");
-      
-  } else {
-      var regex = /^[a-zA-Z\s]+$/;                
-      if(regex.test(pro_name) === false) {
-          printError("nameErr", "*Please enter only alphabet");
-      } else {
-          printError("nameErr", "");
-          nameErr = false;
+  var oidErr = cidErr = pidErr = nameErr = priceErr = qtyErr = dateErr = statusErr = payErr = true;
+  if(order_id == "")
+  {
+    printError("oidErr", "*Please enter order id");
+  }
+    else {
+      var regex = /^[0-9]+$/;
+      if(regex.test(order_id) === false) {
+          printError("oidErr", "*Please enter only digit");
+      } else{
+          printError("oidErr", "");
+          oidErr = false;
       }
   }
-  if(username == "") {
-      printError("userErr", "*Please enter your username");
+  if(cid == "")
+  {
+    printError("cidErr", "*Please enter customer id");
+  }
+    else {
+      var regex = /^[0-9]+$/;
+      if(regex.test(cid) === false) {
+          printError("cidErr", "*Please enter only digit");
+      } else{
+          printError("cidErr", "");
+          cidErr = false;
+      }
+  }
+  if(pro_id == "")
+  {
+    printError("pidErr", "*Please enter product id");
+  }
+    else {
+      var regex = /^[0-9]+$/;
+      if(regex.test(pro_id) === false) {
+          printError("pidErr", "*Please enter only digit");
+      } else{
+          printError("pidErr", "");
+          pidErr = false;
+      }
+  }
+  
+  if(pro_name == "") {
+      printError("nameErr", "Please enter product name");
       
     } else {
         var regex = /^[a-zA-Z\s]+$/;                
-        if(regex.test(username) === false) {
-            printError("userErr", "*Please enter only alphabet");
+        if(regex.test(pro_name) === false) {
+            printError("nameErr", "Please enter only alphabet");
         } else {
-            printError("userErr", "");
-            userErr = false;
+            printError("nameErr", "");
+            nameErr = false;
         }
   }
-  if(custo_name == "") {
-    printError("custoErr", "*Please enter customername");
-    
-  } else {
-      var regex = /^[a-zA-Z\s]+$/;                
-      if(regex.test(custo_name) === false) {
-          printError("custoErr", "*Please enter only alphabet");
-      } else {
-          printError("custoErr", "");
-          custoErr = false;
-      }
-}
+ 
 
   if(pro_price == "")
   {
@@ -255,13 +302,13 @@ function update_order(){
     else {
       var regex = /^[0-9]+$/;
       if(regex.test(qty) === false) {
-          printError("dateErr", "*Plek2ase enter only digit");
+          printError("dateErr", "*Please enter only digit");
       } else{
           printError("dateErr", "");
           dateErr = false;
       }
   }
-  if(order_status == "")
+  if(order_status == "s")
   {
     printError("statusErr", "*Please select order status");
   }
@@ -269,8 +316,7 @@ function update_order(){
     printError("statusErr","");
     statusErr = false;
   }
-
-  if(payment_status == "")
+   if(payment_status == "s")
   {
     printError("payErr", "*Please select payment status");
   }
@@ -278,23 +324,50 @@ function update_order(){
     printError("payErr","");
     payErr = false;
   }
+
+
 };
 
 function update_category(){
   var cat_name = document.contactForm.cat_name.value;
   var cat_desc = document.contactForm.cat_desc.value;
+  var brand_name = document.contactForm.brand_name.value;
+  var cat_id= document.contactForm.cat_id.value;
 
-  var nameErr = descErr = true;
+  var nameErr = descErr = idErr = bnameErr = true;
+  if(cat_id == "") {
+    printError("idErr", "*Please enter product id");
+} else {
+    var regex = /^[0-9]+$/;
+    if(regex.test(cat_id) === false) {
+        printError("idErr", "*Please enter only digit");
+    } else{
+        printError("idErr", "");
+        idErr = false;
+    }
+}
+if(brand_name == "") {
+    printError("bnameErr", "*Please enter category name");
+    
+} else {
+    var regex = /^[a-zA-Z\s]+$/;                
+    if(regex.test(brand_name) === false) {
+        printError("bnameErr", "*Please enter only alphabet");
+    } else {
+        printError("bnameErr", "");
+        bnameErr = false;
+    }
+}
   if(cat_name == "") {
-      printError("nameErr", "*Please enter category name");
+      printError("cnameErr", "*Please enter category name");
       
   } else {
       var regex = /^[a-zA-Z\s]+$/;                
       if(regex.test(cat_name) === false) {
-          printError("nameErr", "*Please enter only alphabet");
+          printError("cnameErr", "*Please enter only alphabet");
       } else {
-          printError("nameErr", "");
-          nameErr = false;
+          printError("cnameErr", "");
+          cnameErr = false;
       }
   }
   if(cat_desc == "") {
